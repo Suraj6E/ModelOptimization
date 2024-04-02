@@ -1,0 +1,99 @@
+[System]
+Name='FuzzyLogic'
+Type='mamdani'
+Version=2.0
+NumInputs=5
+NumOutputs=3
+NumRules=20
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Temperature'
+Range=[0 50]
+NumMFs=3
+MF1='Cold':'trimf',[0 11 22]
+MF2='Comfortable':'trimf',[20 25 30]
+MF3='Hot':'trimf',[28 40 50]
+
+[Input2]
+Name='Light Level'
+Range=[0 100]
+NumMFs=3
+MF1='dark':'trimf',[0 0 10]
+MF2='dim':'trimf',[0 20 40]
+MF3='Bright':'trimf',[30 60 100]
+
+[Input3]
+Name='Humidity'
+Range=[0 70]
+NumMFs=4
+MF1='dry':'trimf',[0 0 40]
+MF2='refreshing':'trimf',[30 40 50]
+MF3='comfortable':'trimf',[40 50 60]
+MF4='humid':'trimf',[50 60 70]
+
+[Input4]
+Name='Time of Day'
+Range=[0 18]
+NumMFs=4
+MF1='Morning':'trimf',[6 8 10]
+MF2='Afternoon':'trimf',[11 13 15]
+MF3='Evening':'trimf',[16 18 20]
+MF4='Night':'trimf',[21 23 24]
+
+[Input5]
+Name='User Presence'
+Range=[0 1]
+NumMFs=2
+MF1='Presence':'trimf',[1 1 1]
+MF2='Absence':'trimf',[0 0 0]
+
+[Output1]
+Name='AC'
+Range=[0 30]
+NumMFs=3
+MF1='Low':'trimf',[16 18 20]
+MF2='Medium':'trimf',[18 23 25]
+MF3='High':'trimf',[24 27 30]
+
+[Output2]
+Name='Lightning'
+Range=[0 1000]
+NumMFs=3
+MF1='Low':'trimf',[0 100 300]
+MF2='Medium':'trimf',[200 500 800]
+MF3='High':'trimf',[700 1000 1100]
+
+[Output3]
+Name='Curtain Openess Level'
+Range=[0 100]
+NumMFs=3
+MF1='close':'trimf',[0 0 50]
+MF2='partial':'trimf',[25 50 75]
+MF3='open':'trimf',[50 100 100]
+
+[Rules]
+1 0 0 0 0, 3 0 0 (1) : 1
+3 0 0 0 0, 1 0 0 (1) : 1
+2 0 0 0 0, 2 0 0 (1) : 1
+1 0 1 0 0, 3 0 0 (1) : 1
+2 0 3 0 0, 2 0 0 (1) : 1
+3 0 4 0 0, 1 0 0 (1) : 1
+3 0 4 0 0, 2 0 0 (1) : 1
+1 0 1 0 0, 2 0 0 (1) : 1
+1 0 3 0 0, 3 0 0 (1) : 1
+0 3 0 0 0, 0 1 0 (1) : 1
+0 1 0 0 0, 0 3 0 (1) : 1
+0 2 0 0 0, 0 2 0 (1) : 1
+0 0 0 1 1, 0 0 3 (1) : 1
+0 0 0 1 2, 0 0 1 (1) : 1
+0 0 0 2 1, 0 0 3 (1) : 1
+0 0 0 2 2, 0 0 1 (1) : 1
+0 0 0 3 1, 0 0 2 (1) : 1
+0 0 0 3 2, 0 0 1 (1) : 1
+0 0 0 4 1, 0 0 1 (1) : 1
+0 0 0 4 2, 0 0 1 (1) : 1
